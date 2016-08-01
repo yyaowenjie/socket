@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+					    http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
+
+    <bean name="scheduler" lazy-init="false" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+               
+            </list>
+        </property>
+    </bean>
+
+    <bean id="schedulerExecuteService" class="com.sq.quert.service.SchedulerExecuteService" />
+
+
+
+</beans>

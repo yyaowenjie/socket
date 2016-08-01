@@ -1,0 +1,15 @@
+package com.sq.socket.client;
+
+import org.springframework.stereotype.Component;
+/**
+ * ª∫¥ÊSocket–≈œ¢≤÷ø‚
+ * 
+ * @User yaowenjie
+ * @Date 2016-6-22
+ * @Time œ¬ŒÁ1:59:23
+ */
+@Component
+public class CacheSocketEntrePoty {
+	
+	
+}

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration debug="false">
+
+    <property name="log.dir" value="${user.dir}/log/panda" />
+
+    <!-- 控制台 -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender" >
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 出错日志 appender  -->
+    <appender name="ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- 按天回滚 daily -->
+            <!-- log.dir 在maven profile里配置 -->
+            <fileNamePattern>${log.dir}/panda-host-%d{yyyyMMdd}.log</fileNamePattern>
+            <!-- 日志最大的历史 60天 -->
+            <maxHistory>60</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- show parameters for hibernate sql 专为 Hibernate 定制 -->
+    <!--<logger name="org.hibernate.type.descriptor.sql.BasicBinder"  level="ERROR" />
+    <logger name="org.hibernate.type.descriptor.sql.BasicExtractor"  level="ERROR" />
+    <logger name="org.hibernate.SQL" level="ERROR" />
+    <logger name="org.hibernate.engine.QueryParameters" level="ERROR" />
+    <logger name="org.hibernate.engine.query.HQLQueryPlan" level="ERROR" />-->
+
+    <!-- 日志输出级别 -->
+    <root level="ERROR">
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="ERROR" />
+    </root>
+
+    <!--错误日志-->
+    <logger name="panda-host" additivity="false" level="ERROR">
+        <appender-ref ref="ERROR"/>
+    </logger>
+
+</configuration>
